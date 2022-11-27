@@ -1,15 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder, LabelEncoder
-import requests
 import gdown
-
-from sklearn.linear_model import LinearRegression # OLS algorithm
-from sklearn.linear_model import Ridge # Ridge algorithm
-from sklearn.linear_model import Lasso # Lasso algorithm
-from sklearn.linear_model import BayesianRidge # Bayesian algorithm
-from sklearn.linear_model import ElasticNet # ElasticNet algorithm
-
-
 
 class Process_CTD_chem_gene:
     df = pd.DataFrame()
@@ -83,39 +74,3 @@ class Process_CTD_chem_gene:
         self.ProcessDataset()
         self.SaveProcessedCSVFile()
         print("end: PreprocessRawData")
-
-
-# def LoadEncodedProcessedFile(self):
-#     print("Start: LoadEncodedProcessedFile")
-#     self.df = pd.read_excel('../Dataset/ProcessedData/CTD_chem_gene_ixns_processed_Encoded.xlsx')
-#     print("end: LoadEncodedProcessedFile")
-
-
-# def LoadDataFromFile(self):
-#     print("Start: LoadDataFromFile")
-#     self.df = pd.read_excel("../Dataset/RawData/ctdbase_chemical_gene_interaction/CTD_chem_gene_ixns.xlsx")
-#     print("end: LoadDataFromFile")
-
-# def DeleteUnecessaryColumn(self):
-#     print("Start: DeleteUnecessaryColumn")
-#     self.df.pop('ChemicalName')
-#     self.df.pop('CasRN')
-#     self.df.pop('Organism')
-#     self.df.pop('Interaction')
-#     self.df.pop('PubMedIDs')
-#     print("end: DeleteUnecessaryColumn")
-
-# def ApplyLevelEncoding(self):
-#     print("Start: ApplyLevelEncoding")
-#     enc = OrdinalEncoder()
-#     self.df = self.df.astype({"ChemicalID":str, "GeneSymbol":str, "GeneForms":str,"InteractionActions":str})
-#     enc.fit(self.df[["ChemicalID", "GeneSymbol", "GeneForms","InteractionActions"]])
-#     self.df[["ChemicalID", "GeneSymbol", "GeneForms","InteractionActions"]] = enc.transform(self.df[["ChemicalID", "GeneSymbol", "GeneForms","InteractionActions"]])
-#     self.df.to_excel('../Dataset/ProcessedData/CTD_chem_gene_ixns_processed_Encoded.xlsx',index=False)
-#     print("end: ApplyLevelEncoding")
-
-
-# def SaveProcessedFile(self):
-#     print("Start: SaveProcessedFile")
-#     self.df.to_excel('../Dataset/ProcessedData/CTD_chem_gene_ixns_processed.xlsx',index=False)
-#     print("end: SaveProcessedFile")
