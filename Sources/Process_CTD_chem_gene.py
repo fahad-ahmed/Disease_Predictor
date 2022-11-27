@@ -3,6 +3,12 @@ from sklearn.preprocessing import OrdinalEncoder, LabelEncoder
 import requests
 import gdown
 
+from sklearn.linear_model import LinearRegression # OLS algorithm
+from sklearn.linear_model import Ridge # Ridge algorithm
+from sklearn.linear_model import Lasso # Lasso algorithm
+from sklearn.linear_model import BayesianRidge # Bayesian algorithm
+from sklearn.linear_model import ElasticNet # ElasticNet algorithm
+
 
 
 class Process_CTD_chem_gene:
@@ -25,7 +31,7 @@ class Process_CTD_chem_gene:
 
     def LoadDataFromCSVFile(self):
         print("Start: LoadDataFromFile")
-        self.df = pd.read_csv("../Dataset/RawData/ctdbase_chemical_gene_interaction/CTD_chemicals_diseases.csv", nrows=10000000)
+        self.df = pd.read_csv("../Dataset/RawData/ctdbase_chemical_gene_interaction/CTD_chemicals_diseases.csv", nrows=1000000)
         print("end: LoadDataFromFile")
 
     def ProcessDataset(self):
@@ -34,17 +40,26 @@ class Process_CTD_chem_gene:
         self.df.pop('ChemicalName')
         self.df.pop('CasRN')
         self.df.pop('DiseaseName')
-        self.df.pop('DiseaseID')
+        #self.df.pop('DiseaseID')
         self.df.pop('DirectEvidence')
         self.df.pop('OmimIDs')
         self.df.pop('PubMedIDs')
-        self.df['ChemicalID'] = [str(i).removeprefix('C') for i in self.df['ChemicalID']]
-        self.df['ChemicalID'] = [str(i).removeprefix('D') for i in self.df['ChemicalID']]
 
         enc = OrdinalEncoder()
         self.df = self.df.astype({"InferenceGeneSymbol": str})
         enc.fit(self.df[["InferenceGeneSymbol"]])
         self.df[["InferenceGeneSymbol"]] = enc.transform(self.df[["InferenceGeneSymbol"]])
+
+        self.df = self.df.astype({"DiseaseID": str})
+        enc.fit(self.df[["DiseaseID"]])
+        self.df[["DiseaseID"]] = enc.transform(self.df[["DiseaseID"]])
+
+        self.df = self.df.astype({"ChemicalID": str})
+        enc.fit(self.df[["ChemicalID"]])
+        self.df[["ChemicalID"]] = enc.transform(self.df[["ChemicalID"]])
+
+        self.df = self.df.apply(pd.to_numeric, errors='coerce')
+        self.df = self.df.dropna()
 
         print("end: ProcessDataset")
 

@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fdbdf659-2e89-4467-8ca1-4bc39c505d88" name="Changes" comment="" />
+    <list default="true" id="fdbdf659-2e89-4467-8ca1-4bc39c505d88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Sources/MachineLearningAlgorithm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/Process_CTD_chem_gene.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Process_CTD_chem_gene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
